@@ -10,6 +10,7 @@ contract DeferredEquityPlan {
     // @TODO: Set the total shares and annual distribution
     uint total_shares = 1000;
     uint annual_distibution = 250;
+    uint fakenow = now;
 
     uint start_time = now; // permanently store the time this contract was initialized
 
@@ -56,4 +57,9 @@ contract DeferredEquityPlan {
     function() external payable {
         revert("Do not send Ether to this contract!");
     }
+
+    function fastforward() public {
+        fakenow += 100 days;
+    }
+
 }
